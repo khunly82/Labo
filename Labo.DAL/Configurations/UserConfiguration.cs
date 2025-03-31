@@ -32,7 +32,7 @@ namespace Labo.DAL.Configurations
             Guid salt = Guid.NewGuid();
             yield return new User
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("a6a71a1f-699e-4a01-a3b3-89354a01ef4f"),
                 Username = "Checkmate",
                 Email = "lykhun@gmail.com",
                 Gender = DL.Enums.UserGender.Male,
@@ -48,7 +48,7 @@ namespace Labo.DAL.Configurations
             salt = Guid.NewGuid();
             yield return new User
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("2649548b-ba8d-4f9b-b1ab-c58bc64a063b"),
                 Username = "John",
                 Email = "j@yopmail.com",
                 Gender = DL.Enums.UserGender.Male,
@@ -63,7 +63,7 @@ namespace Labo.DAL.Configurations
             salt = Guid.NewGuid();
             yield return new User
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("34303638-fe61-4d76-83d3-d4ca8576542a"),
                 Username = "Sarah",
                 Email = "s@yopmail.com",
                 Gender = DL.Enums.UserGender.Female,

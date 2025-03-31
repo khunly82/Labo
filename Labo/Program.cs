@@ -50,7 +50,6 @@ builder.Services.AddCors(options
 
 
 WebApplication app = builder.Build();
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -67,7 +66,6 @@ app.UseException();
 app.MapControllers();
 
 app.Run();
-
 
 void ConfigureSwagger(SwaggerGenOptions options)
 {

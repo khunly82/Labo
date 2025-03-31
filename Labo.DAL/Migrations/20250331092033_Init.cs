@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Labo.DAL.Migrations
 {
+    /// <inheritdoc />
     public partial class Init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -38,8 +40,8 @@ namespace Labo.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, defaultValue: "Khun"),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EncodedPassword = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Salt = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -115,16 +117,7 @@ namespace Labo.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "BirthDate", "Elo", "Email", "EncodedPassword", "Gender", "IsDeleted", "Role", "Salt", "Username" },
-                values: new object[,]
-                {
-                    { new Guid("2649548b-ba8d-4f9b-b1ab-c58bc64a063b"), new DateTime(2000, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1500, "j@yopmail.com", new byte[] { 125, 87, 111, 213, 101, 94, 74, 103, 51, 111, 215, 126, 213, 212, 244, 226, 29, 10, 168, 162, 159, 114, 93, 88, 148, 68, 163, 199, 69, 121, 83, 139, 131, 52, 227, 162, 240, 163, 163, 165, 37, 144, 61, 152, 133, 46, 133, 7, 41, 250, 5, 144, 106, 116, 23, 81, 28, 98, 107, 250, 153, 94, 40, 19 }, "Male", false, "Player", new Guid("3778dbeb-089f-4e4a-8429-f2c764508204"), "John" },
-                    { new Guid("34303638-fe61-4d76-83d3-d4ca8576542a"), new DateTime(2000, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1800, "s@yopmail.com", new byte[] { 251, 150, 55, 77, 13, 233, 107, 179, 32, 234, 76, 32, 51, 147, 131, 220, 35, 138, 211, 234, 86, 142, 172, 238, 148, 188, 182, 230, 254, 148, 90, 142, 145, 238, 205, 122, 201, 216, 217, 35, 71, 108, 221, 171, 200, 202, 0, 56, 214, 103, 244, 26, 5, 42, 182, 13, 189, 208, 91, 69, 186, 170, 50, 124 }, "Female", false, "Player", new Guid("9661f007-fa05-4157-9d45-d1e1fdb22eda"), "Sarah" },
-                    { new Guid("a6a71a1f-699e-4a01-a3b3-89354a01ef4f"), new DateTime(1982, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1800, "lykhun@gmail.com", new byte[] { 40, 231, 100, 182, 70, 180, 236, 212, 130, 67, 117, 128, 122, 190, 151, 184, 27, 89, 8, 128, 136, 20, 52, 174, 234, 236, 143, 52, 40, 161, 20, 12, 116, 36, 254, 110, 76, 213, 11, 11, 109, 101, 110, 194, 68, 117, 161, 126, 30, 190, 152, 158, 21, 179, 68, 29, 246, 231, 223, 225, 41, 60, 186, 57 }, "Male", false, "Admin", new Guid("a87100d6-1cb2-4c3d-b0b0-468d6d6ca662"), "Checkmate" },
-                    { new Guid("aa9dad4c-f575-4036-bb5f-c66ba0c565be"), new DateTime(2000, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1800, "p@yopmail.com", new byte[] { 42, 189, 61, 202, 141, 168, 248, 201, 152, 241, 47, 66, 56, 115, 180, 28, 55, 6, 233, 38, 207, 121, 116, 24, 86, 72, 102, 44, 66, 62, 154, 72, 252, 245, 8, 54, 91, 212, 176, 223, 11, 79, 192, 92, 70, 78, 177, 49, 32, 116, 159, 248, 41, 43, 143, 119, 135, 26, 240, 133, 62, 25, 49, 209 }, "Male", false, "Player", new Guid("de88ab94-a07a-4c95-a93f-461f1b8a2ca1"), "Paul" },
-                    { new Guid("b4ed6087-6683-421d-9dc4-d286cd077058"), new DateTime(2000, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1800, "g@yopmail.com", new byte[] { 175, 137, 165, 92, 157, 160, 33, 48, 64, 125, 46, 32, 194, 167, 215, 65, 128, 86, 74, 86, 166, 33, 220, 215, 234, 170, 13, 163, 185, 43, 238, 108, 52, 201, 11, 123, 132, 96, 151, 52, 128, 80, 101, 122, 244, 129, 103, 146, 21, 198, 24, 27, 60, 143, 14, 30, 250, 223, 15, 108, 241, 175, 133, 177 }, "Male", false, "Player", new Guid("32311147-6328-4722-a824-480a0c083b14"), "Georges" },
-                    { new Guid("e578d77c-cc21-414a-b98d-1795ab13fe6e"), new DateTime(2000, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1800, "r@yopmail.com", new byte[] { 142, 37, 160, 155, 223, 80, 221, 129, 26, 126, 140, 163, 232, 104, 250, 190, 213, 195, 22, 175, 139, 22, 40, 85, 80, 213, 186, 116, 63, 171, 165, 183, 51, 207, 143, 39, 158, 109, 164, 107, 94, 202, 66, 63, 210, 6, 230, 174, 176, 31, 252, 220, 6, 109, 193, 246, 4, 151, 106, 141, 229, 99, 53, 130 }, "Male", false, "Player", new Guid("32205f5c-42e4-4095-8fdd-d8b2560ce2c4"), "Ringo" },
-                    { new Guid("f6ea3526-9298-4312-b666-a41df3af88c2"), new DateTime(2005, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1200, "b@yopmail.com", new byte[] { 155, 72, 145, 221, 117, 63, 188, 202, 211, 101, 199, 93, 137, 255, 150, 219, 110, 115, 26, 226, 36, 24, 230, 201, 19, 108, 104, 152, 59, 21, 176, 157, 29, 44, 38, 223, 138, 155, 70, 90, 227, 255, 110, 239, 66, 163, 118, 199, 42, 1, 229, 65, 32, 211, 203, 32, 183, 54, 146, 117, 241, 163, 173, 73 }, "Female", false, "Player", new Guid("fa7900ef-b38f-4ef9-b6f6-896f187e831c"), "Brithney" }
-                });
+                values: new object[] { new Guid("a6a71a1f-699e-4a01-a3b3-89354a01ef4f"), new DateTime(1982, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1800, "lykhun@gmail.com", new byte[] { 35, 244, 107, 248, 178, 148, 85, 23, 41, 19, 159, 3, 114, 192, 251, 216, 12, 190, 247, 218, 168, 247, 148, 186, 11, 56, 247, 117, 60, 59, 108, 167, 181, 181, 64, 227, 91, 55, 143, 118, 138, 67, 126, 216, 205, 219, 123, 77, 125, 68, 82, 140, 48, 221, 154, 228, 185, 233, 37, 73, 240, 14, 239, 205 }, "Male", false, "Admin", new Guid("bc2b9d77-1b95-4120-ae12-117be700e245"), "Checkmate" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Match_BlackId",
@@ -147,6 +140,12 @@ namespace Labo.DAL.Migrations
                 column: "TournamentsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_Salt",
                 table: "Users",
                 column: "Salt",
@@ -159,6 +158,7 @@ namespace Labo.DAL.Migrations
                 unique: true);
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

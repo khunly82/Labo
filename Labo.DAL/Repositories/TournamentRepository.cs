@@ -13,20 +13,21 @@ namespace Labo.DAL.Repositories
             string? name,
             TournamentCategory? category,
             IEnumerable<TournamentStatus>? statuses,
+            DateTime? from,
             bool womenOnly = false,
             int offset = 0,
             int limit = 10
         )
         {
-            return Entities
+            var result = Entities
                 .Include(t => t.Players)
                 .Where(t => name == null || t.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase))
                 .Where(t => category == null || t.Categories.HasFlag((TournamentCategory)category))
                 .Where(t => statuses == null || !statuses.Any() || statuses.Contains(t.Status))
                 .Where(t => !womenOnly || t.WomenOnly)
-                .OrderByDescending(t => t.UpdateDate)
-                .Skip(offset)
-                .Take(limit);
+                .OrderByDescending(t => t.UpdateDate);
+            return from is null ? result.Skip(offset).Take(limit) : result
+                .Where(t => t.EndOfRegistrationDate >= from && t.EndOfRegistrationDate < from.Value.AddMonths(1));
         }
 
         public int CountByCriteria(

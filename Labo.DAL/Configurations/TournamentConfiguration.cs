@@ -1,4 +1,6 @@
 ﻿using Labo.DL.Entities;
+using Labo.DL.Enums;
+using Labo.Utils.Password;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,7 +18,8 @@ namespace Labo.DAL.Configurations
 
             builder.Property(t => t.Status)
                 .HasConversion<string>();
+
+            
         }
     }
 }
-

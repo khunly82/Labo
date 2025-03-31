@@ -18,6 +18,7 @@ namespace Labo.BLL.Services
                 criteria.Name,
                 criteria.Category,
                 criteria.Statuses,
+                criteria.From,
                 criteria.WomenOnly,
                 criteria.Offset
             ).Select(t =>
