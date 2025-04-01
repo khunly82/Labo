@@ -5,8 +5,6 @@ using Labo.IL.Configurations;
 using Labo.IL.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Mail;
-using System.Reflection;
-using ToolBox.EF.Repository;
 
 namespace Labo.API.DependencyInjections
 {
@@ -44,7 +42,7 @@ namespace Labo.API.DependencyInjections
            services.AddScoped<ITournamentRepository, TournamentRepository>();
 
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IMatchRepository, MatchRepository>()
+            services.AddScoped<IMatchRepository, MatchRepository>();
             return services;
         }
 
