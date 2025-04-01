@@ -1,5 +1,6 @@
 ﻿using Labo.BLL.Interfaces;
 using Labo.BLL.Services;
+using Labo.DAL.Repositories;
 using Labo.IL.Configurations;
 using Labo.IL.Services;
 using System.IdentityModel.Tokens.Jwt;
@@ -40,11 +41,10 @@ namespace Labo.API.DependencyInjections
 
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-           AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(a => a.GetTypes())
-                .Where(t => t.IsSubclassOf(typeof(RepositoryBase)))
-                .ToList()
-                .ForEach(t => services.AddScoped(t.GetInterfaces().First(i => !i.IsGenericType), t));
+           services.AddScoped<ITournamentRepository, TournamentRepository>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMatchRepository, MatchRepository>()
             return services;
         }
 
