@@ -50,6 +50,15 @@ builder.Services.AddCors(options
 
 
 WebApplication app = builder.Build();
+
+TournamentContext context = app.Services.CreateScope().ServiceProvider.GetRequiredService<TournamentContext>();
+
+if(context.Database.GetPendingMigrations().Any())
+{
+    context.Database.Migrate();
+}
+
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

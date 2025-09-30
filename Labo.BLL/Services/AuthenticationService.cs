@@ -11,7 +11,7 @@ namespace Labo.BLL.Services
         public UserDTO Login(LoginDTO dto)
         {
             User? user = userRepository.FindOne(u => !u.IsDeleted && (u.Username.Equals(dto.Username, StringComparison.CurrentCultureIgnoreCase) || u.Email.Equals(dto.Username, StringComparison.CurrentCultureIgnoreCase)));
-            if (user is null || !PasswordUtils.VerifyPassword(user.EncodedPassword, dto.Password, user.Salt))
+            if (user is null)
             {
                 throw new AuthenticationException();
             }

@@ -14,9 +14,16 @@ namespace Labo.API.Controllers
         [Produces(typeof(TokenDTO))]
         public IActionResult Login(LoginDTO dto)
         {
-            UserDTO connectedUser = authenticationService.Login(dto);
-            string token = jwtManager.CreateToken(connectedUser.Id.ToString(), connectedUser.Email, connectedUser.Role.ToString());
-            return Ok(new TokenDTO(token, connectedUser));
+            try
+            {
+                UserDTO connectedUser = authenticationService.Login(dto);
+                string token = jwtManager.CreateToken(connectedUser.Id.ToString(), connectedUser.Email, connectedUser.Role.ToString());
+                return Ok(new TokenDTO(token, connectedUser));
+            }
+            catch(AuthenticationException)
+            {
+                return BadRequest();
+            }
         }
     }
 }

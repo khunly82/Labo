@@ -9,6 +9,6 @@ namespace Labo.BLL.DTO.Tournaments
         public string? Name { get; set; }
         public bool WomenOnly { get; set; }
         public TournamentCategory? Category { get; set; }
-        public IEnumerable<TournamentStatus>? Statuses { get; set; } = [TournamentStatus.WaitingForPlayers, TournamentStatus.InProgress];
+        public List<TournamentStatus>? Statuses { get; set; } = [TournamentStatus.WaitingForPlayers, TournamentStatus.InProgress];
     }
 }
