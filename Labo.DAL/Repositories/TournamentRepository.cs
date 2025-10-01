@@ -38,7 +38,7 @@ namespace Labo.DAL.Repositories
         )
         {
             return Entities
-                .Where(t => name == null || t.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase))
+                .Where(t => name == null || t.Name.Contains(name))
                 .Where(t => category == null || t.Categories.HasFlag((TournamentCategory)category))
                 .Where(t => statuses == null || !statuses.Any() || statuses.Contains(t.Status))
                 .Where(t => !wonenOnly || t.WomenOnly)
